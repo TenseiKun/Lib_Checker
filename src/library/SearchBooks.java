@@ -18,6 +18,7 @@ public class SearchBooks {
         System.out.println("----------------------------------------------");
         for (Books e : BooksStorage.c) {
             if (e.getBookName().toLowerCase().contains(name.toLowerCase())) {
+                System.out.println();
                 System.out.println(e);
                 System.out.println();
                 found = true;

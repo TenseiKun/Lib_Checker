@@ -25,6 +25,7 @@ public class AddBooks {
             String dateA = LocalDate.now().toString();
             BooksStorage.c.add(new Books(id, bookName, author, publisher, dateA, quantity));
             System.out.println("\nSuccessfully added!");
+            System.out.println();
         } catch (Exception e) {
             System.out.println("Invalid response for the question, repeat your entry:");
             System.out.println();

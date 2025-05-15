@@ -6,75 +6,92 @@ public class DeleteBooks {
         System.out.println("Delete Book Menu:");
         System.out.println("1. Delete a book");
         System.out.println("2. Return to Main Menu");
-        int option = sc1.nextInt();
-        System.out.println();
 
-        switch (option) {
-            case 1:
-                if (BooksStorage.c.isEmpty()) {
-                    System.out.println("There's no book(s) in the list!");
+        try {
+            int option = sc1.nextInt();
+            System.out.println();
+
+            switch (option) {
+                case 1:
+                    if (BooksStorage.c.isEmpty()) {
+                        System.out.println("There's no book(s) in the list!");
+                        System.out.println();
+                        deleteBooks(sc1, sc);
+                        return;
+                    }
+
+                    System.out.println("Here's the list of all the book(s):");
+                    System.out.println("----------------------------------------------");
                     System.out.println();
-                    deleteBooks(sc1, sc);
-                    return;
-                }
-
-                System.out.println("Here's the list of all the book(s):");
-                System.out.println("----------------------------------------------");
-                for (Books e : BooksStorage.c) {
-                    System.out.println(e);
-                    System.out.println();
-                }
-                System.out.println("----------------------------------------------");
-
-                System.out.print("Enter book ID to delete: ");
-                int id = sc1.nextInt();
-                System.out.println();
-
-                boolean found = false;
-                for (Books e : BooksStorage.c) {
-                    if (e.getId() == id) {
-                        System.out.println("Are you sure you want to delete this book? Y/N");
+                    for (Books e : BooksStorage.c) {
                         System.out.println(e);
-                        found = true;
-                        break;
+                        System.out.println();
                     }
-                }
+                    System.out.println("----------------------------------------------");
 
-                if (!found) {
-                    System.out.println("Book not found :<");
-                    System.out.println();
-                    deleteBooks(sc1, sc);
-                    return;
-                }
+                    System.out.print("Enter book ID to delete: ");
+                    try {
+                        int id = sc1.nextInt();
+                        System.out.println();
 
-                String confirmation = sc1.next();
-                System.out.println();
-
-                if (confirmation.equalsIgnoreCase("Y")) {
-                    Iterator<Books> iter = BooksStorage.c.iterator();
-                    while (iter.hasNext()) {
-                        if (iter.next().getId() == id) {
-                            iter.remove();
-                            System.out.println("The book has been deleted from the list.");
-                            break;
+                        boolean found = false;
+                        for (Books e : BooksStorage.c) {
+                            if (e.getId() == id) {
+                                System.out.println("Are you sure you want to delete this book? Type \"Y\" to proceed, otherwise type anything to cancel");
+                                System.out.println(e);
+                                found = true;
+                                break;
+                            }
                         }
+
+                        if (!found) {
+                            System.out.println("Book not found :<");
+                            System.out.println();
+                            deleteBooks(sc1, sc);
+                            return;
+                        }
+
+                        String confirmation = sc1.next();
+                        System.out.println();
+
+                        if (confirmation.equalsIgnoreCase("Y")) {
+                            Iterator<Books> iter = BooksStorage.c.iterator();
+                            while (iter.hasNext()) {
+                                if (iter.next().getId() == id) {
+                                    iter.remove();
+                                    System.out.println("The book has been deleted from the list.");
+                                    break;
+                                }
+                            }
+                        } else {
+                            System.out.println("Cancelled. Book was not deleted.");
+                        }
+
+                        System.out.println();
+                        deleteBooks(sc1, sc);
+                        break;
+
+                    } catch (Exception e) {
+                        System.out.println("Invalid book ID. Please enter a valid number.");
+                        sc1.nextLine(); // Clear invalid input
+                        deleteBooks(sc1, sc);
+                        return;
                     }
-                } else {
-                    System.out.println("Cancelled. Book was not deleted.");
-                }
 
-                System.out.println();
-                deleteBooks(sc1, sc);
-                break;
+                case 2:
+                    App2.main(null);
+                    break;
 
-            case 2:
-                App2.main(null);
-                break;
+                default:
+                    System.out.println("Invalid option. Retry again.");
+                    deleteBooks(sc1, sc);
+                    break;
+            }
 
-            default:
-                System.out.println("Invalid option. Returning to Main Menu.");
-                deleteBooks(sc1, sc);
-                break;
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter a number.");
+            sc1.nextLine(); // Clear invalid input
+            deleteBooks(sc1, sc);
         }
     }
 }

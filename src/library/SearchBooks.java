@@ -42,8 +42,8 @@ public class SearchBooks {
         while (true) {
             System.out.println("Search Menu:");
             System.out.println("1. Search again");
-            System.out.println("2. Delete");
-            System.out.println("3. Update");
+            System.out.println("2. Delete Books");
+            System.out.println("3. Update Books");
             System.out.println("4. Return to Main Menu");
             System.out.println("Type the number of your option, 1-4");
 
@@ -59,7 +59,7 @@ public class SearchBooks {
                         if (matchedBooks.isEmpty()) {
                             System.out.println("No matched books to delete.");
                             System.out.println();
-                            continue; // Stay in search menu
+                            continue; 
                         }
                         displayMatchedBooks(matchedBooks);
                         handleDelete(sc, matchedBooks, searchTerm);
@@ -68,7 +68,7 @@ public class SearchBooks {
                         if (matchedBooks.isEmpty()) {
                             System.out.println("No matched books to update.");
                             System.out.println();
-                            continue; // Stay in search menu
+                            continue; 
                         }
                         displayMatchedBooks(matchedBooks);
                         handleUpdate(sc, matchedBooks, searchTerm);
@@ -104,7 +104,7 @@ public class SearchBooks {
     }
 
     private static void handleDelete(Scanner sc, List<Books> matchedBooks, String searchTerm) {
-        System.out.print("Enter Book ID to delete: ");
+        System.out.print("Enter Book number to delete: ");
         try {
             int id = sc.nextInt();
             System.out.println();
@@ -132,7 +132,7 @@ public class SearchBooks {
             String confirm = sc.next();
             if (confirm.equalsIgnoreCase("Y")) {
                 BooksStorage.c.remove(target);
-                matchedBooks.remove(target); // Keep matchedBooks updated
+                matchedBooks.remove(target); 
                 System.out.println("The book has been deleted.");
             } else {
                 System.out.println("Cancelled. Book was not deleted.");
@@ -154,7 +154,7 @@ public class SearchBooks {
     }
 
     private static void handleUpdate(Scanner sc, List<Books> matchedBooks, String searchTerm) {
-        System.out.print("Enter Book ID to update: ");
+        System.out.print("Enter Book number to update: ");
         try {
             int id = sc.nextInt();
             System.out.println();
@@ -206,7 +206,7 @@ public class SearchBooks {
                 }
 
                 System.out.println();
-                displayMatchedBooks(matchedBooks); // Show updated matched books list
+                displayMatchedBooks(matchedBooks); 
 
                 System.out.println("\nBook updated successfully!");
             } else {

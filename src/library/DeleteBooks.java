@@ -79,7 +79,7 @@ public class DeleteBooks {
 
                     } catch (Exception e) {
                         System.out.println("Invalid book ID. Please enter a valid number.");
-                        sc1.nextLine(); // Clear invalid input
+                        sc1.nextLine();
                         deleteBooks(sc1, sc);
                         return;
                     }
@@ -96,7 +96,7 @@ public class DeleteBooks {
 
         } catch (Exception e) {
             System.out.println("Invalid input. Please enter a number.");
-            sc1.nextLine(); // Clear invalid input
+            sc1.nextLine(); 
             deleteBooks(sc1, sc);
         }
     }

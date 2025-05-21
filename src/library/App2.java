@@ -4,10 +4,18 @@ import java.util.*;
 import java.time.LocalDate;
 
 public class App2 {
+    static boolean introStatement = false;
+
     public static void main(String[] args) {
-        System.out.println("Welcome to Library Checker!");
-        System.out.println("Use this system to keep track of all books");
-        System.out.println();
+
+        if (!introStatement) {
+            System.out.println("Welcome to Library Checker!");
+            System.out.println("Use this system to keep track of all books");
+            System.out.println();
+        }
+        introStatement = true;
+
+        
 
         int i = 0;
 
@@ -48,7 +56,7 @@ public class App2 {
                     String confirmation = sc1.next();
                     System.out.println();
                     if (confirmation.equalsIgnoreCase("Y")) {
-                        System.out.println("Ending Program!");
+                        System.out.println("Program Ended!");
                         System.exit(0);
                     } else {
                         main(args);

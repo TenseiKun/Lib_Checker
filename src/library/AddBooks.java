@@ -1,4 +1,5 @@
 package library;
+
 import java.util.*;
 import java.time.LocalDate;
 
@@ -27,7 +28,7 @@ public class AddBooks {
             System.out.println("\nSuccessfully added!");
             System.out.println();
         } catch (Exception e) {
-            System.out.println("Invalid response for the question, repeat your entry:");
+            System.out.println("Invalid response, repeat again:");
             System.out.println();
             addBooks(sc, sc1, i);
         }

@@ -1,11 +1,14 @@
 package library;
+
 import java.util.*;
 
 public class DeleteBooks {
     public static void deleteBooks(Scanner sc1, Scanner sc) {
         System.out.println("Delete Book Menu:");
+
         System.out.println("1. Delete a book");
         System.out.println("2. Return to Main Menu");
+        System.out.println("Type the number of your option, 1-2");
 
         try {
             int option = sc1.nextInt();
@@ -29,7 +32,7 @@ public class DeleteBooks {
                     }
                     System.out.println("----------------------------------------------");
 
-                    System.out.print("Enter book ID to delete: ");
+                    System.out.print("Enter book number to delete: ");
                     try {
                         int id = sc1.nextInt();
                         System.out.println();
@@ -37,8 +40,11 @@ public class DeleteBooks {
                         boolean found = false;
                         for (Books e : BooksStorage.c) {
                             if (e.getId() == id) {
-                                System.out.println("Are you sure you want to delete this book? Type \"Y\" to proceed, otherwise type anything to cancel");
+                                System.out.println("----------------------------------------------");
                                 System.out.println(e);
+                                System.out.println("----------------------------------------------");
+                                System.out.println("Confirmation: ");
+                                System.out.println("Type \"Y\" to delete, type anything to cancel.");
                                 found = true;
                                 break;
                             }

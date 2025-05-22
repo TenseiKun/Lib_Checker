@@ -32,7 +32,7 @@ public class AddBooks {
             System.out.println();
             addBooks(sc, sc1, i);
         }
-        App2.main(null);
+        Main.main(null);
     }
 
 }

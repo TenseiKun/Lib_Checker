@@ -7,11 +7,11 @@ public class SearchBooks {
         if (BooksStorage.c.isEmpty()) {
             System.out.println("There's no book(s) in the list!");
             System.out.println();
-            App2.main(null);
+            Main.main(null);
             return;
         }
 
-        performSearch(sc); // Directly start searching
+        performSearch(sc);
     }
 
     private static void performSearch(Scanner sc) {
@@ -29,13 +29,13 @@ public class SearchBooks {
         if (matchedBooks.isEmpty()) {
             System.out.println("Book Not Found");
             System.out.println();
-            // Instead of going back to main, show search menu with empty matchedBooks
+
             searchMenu(sc, matchedBooks, name);
             return;
         }
 
         displayMatchedBooks(matchedBooks);
-        searchMenu(sc, matchedBooks, name); // Pass search term also
+        searchMenu(sc, matchedBooks, name);
     }
 
     private static void searchMenu(Scanner sc, List<Books> matchedBooks, String searchTerm) {
@@ -59,7 +59,7 @@ public class SearchBooks {
                         if (matchedBooks.isEmpty()) {
                             System.out.println("No matched books to delete.");
                             System.out.println();
-                            continue; 
+                            continue;
                         }
                         displayMatchedBooks(matchedBooks);
                         handleDelete(sc, matchedBooks, searchTerm);
@@ -68,13 +68,13 @@ public class SearchBooks {
                         if (matchedBooks.isEmpty()) {
                             System.out.println("No matched books to update.");
                             System.out.println();
-                            continue; 
+                            continue;
                         }
                         displayMatchedBooks(matchedBooks);
                         handleUpdate(sc, matchedBooks, searchTerm);
                         return;
                     case 4:
-                        App2.main(null);
+                        Main.main(null);
                         return;
                     default:
                         System.out.println("Invalid option. Try again.\n");
@@ -132,7 +132,7 @@ public class SearchBooks {
             String confirm = sc.next();
             if (confirm.equalsIgnoreCase("Y")) {
                 BooksStorage.c.remove(target);
-                matchedBooks.remove(target); 
+                matchedBooks.remove(target);
                 System.out.println("The book has been deleted.");
             } else {
                 System.out.println("Cancelled. Book was not deleted.");
@@ -182,13 +182,13 @@ public class SearchBooks {
             String confirm = sc.next();
             if (confirm.equalsIgnoreCase("Y")) {
                 System.out.print("Enter new book name: ");
-                sc.nextLine(); // clear buffer
+                sc.nextLine();
                 String newName = sc.nextLine();
 
                 System.out.print("Quantity: ");
                 int quantity = sc.nextInt();
 
-                sc.nextLine(); // clear buffer
+                sc.nextLine();
                 System.out.print("Author name: ");
                 String newAuthor = sc.nextLine();
 
@@ -200,13 +200,12 @@ public class SearchBooks {
                 target.setAuthor(newAuthor);
                 target.setPublisher(newPublisher);
 
-                // Remove from matchedBooks if no longer matches search term
                 if (!newName.toLowerCase().contains(searchTerm.toLowerCase())) {
                     matchedBooks.remove(target);
                 }
 
                 System.out.println();
-                displayMatchedBooks(matchedBooks); 
+                displayMatchedBooks(matchedBooks);
 
                 System.out.println("\nBook updated successfully!");
             } else {

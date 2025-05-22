@@ -4,8 +4,13 @@ import java.util.*;
 
 public class DeleteBooks {
     public static void deleteBooks(Scanner sc1, Scanner sc) {
-        System.out.println("Delete Book Menu:");
+        if (BooksStorage.c.isEmpty()) {
+            System.out.println("There's no book(s) in the list!");
+            System.out.println();
+            Main.main(null);
 
+        }
+        System.out.println("Delete Book Menu:");
         System.out.println("1. Delete a book");
         System.out.println("2. Return to Main Menu");
         System.out.println("Type the number of your option, 1-2");
@@ -16,13 +21,6 @@ public class DeleteBooks {
 
             switch (option) {
                 case 1:
-                    if (BooksStorage.c.isEmpty()) {
-                        System.out.println("There's no book(s) in the list!");
-                        System.out.println();
-                        deleteBooks(sc1, sc);
-                        return;
-                    }
-
                     System.out.println("Here's the list of all the book(s):");
                     System.out.println("----------------------------------------------");
                     System.out.println();
@@ -85,7 +83,7 @@ public class DeleteBooks {
                     }
 
                 case 2:
-                    App2.main(null);
+                    Main.main(null);
                     break;
 
                 default:
@@ -96,7 +94,7 @@ public class DeleteBooks {
 
         } catch (Exception e) {
             System.out.println("Invalid input. Please enter a number.");
-            sc1.nextLine(); 
+            sc1.nextLine();
             deleteBooks(sc1, sc);
         }
     }

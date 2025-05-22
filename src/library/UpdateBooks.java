@@ -5,8 +5,13 @@ import java.time.LocalDate;
 
 public class UpdateBooks {
     public static void updateBooks(Scanner sc1, Scanner sc) {
-        System.out.println("Update Book Menu:");
+        if (BooksStorage.c.isEmpty()) {
+            System.out.println("There's no book(s) in the list!");
+            System.out.println();
+            Main.main(null);
 
+        }
+        System.out.println("Update Book Menu:");
         System.out.println("1. Update a book");
         System.out.println("2. Return to Main Menu");
         System.out.println("Type the number of your option, 1-2");
@@ -17,12 +22,6 @@ public class UpdateBooks {
 
             switch (option) {
                 case 1:
-                    if (BooksStorage.c.isEmpty()) {
-                        System.out.println("There's no book(s) in the list!");
-                        System.out.println();
-                        App2.main(null);
-                        return;
-                    }
 
                     boolean found = false;
                     System.out.println("Here's the list of all the book(s): ");
@@ -90,21 +89,22 @@ public class UpdateBooks {
                         } else {
                             System.out.println("Update cancelled.");
                             System.out.println();
-                            App2.main(null);
+                            updateBooks(sc1, sc);
                         }
 
                         System.out.println();
-                        App2.main(null);
+                        updateBooks(sc1, sc);
 
                     } catch (Exception e) {
                         System.out.println("Invalid input. Please enter a valid number.");
                         sc1.nextLine();
+                        System.out.println();
                         updateBooks(sc1, sc);
                     }
                     break;
 
                 case 2:
-                    App2.main(null);
+                    Main.main(null);
                     break;
 
                 default:

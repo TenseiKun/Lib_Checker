@@ -1,4 +1,5 @@
 package library;
+
 import java.time.LocalDate;
 
 public class Books {
@@ -44,19 +45,18 @@ public class Books {
 
     public String toString() {
         return "Book No. " + id + ": " +
-               "Book Name: " + capitalizeFirstLetter(bookName) + "\n" +
-               "Author Name: " + capitalizeFirstLetter(author) + "\n" +
-               "Quantity: " + quantity + "\n" +
-               "Publisher: " + capitalizeFirstLetter(publisher) + "\n" +
-               "Date Added: " + dateA;
+                "Book Name: " + capitalizeFirstLetter(bookName) + "\n" +
+                "Author Name: " + capitalizeFirstLetter(author) + "\n" +
+                "Quantity: " + quantity + "\n" +
+                "Publisher: " + capitalizeFirstLetter(publisher) + "\n" +
+                "Date Added: " + dateA;
     }
-    
-    
+
     private String capitalizeFirstLetter(String str) {
         if (str == null || str.isEmpty()) {
-            return str; 
+            return str;
         }
-        return str.substring(0, 1).toUpperCase() + str.substring(1);  
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
     public void setBookName(String bookName) {

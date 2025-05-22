@@ -3,7 +3,7 @@ package library;
 import java.util.*;
 import java.time.LocalDate;
 
-public class App2 {
+public class Main {
     static boolean introStatement = false;
 
     public static void main(String[] args) {
@@ -14,16 +14,10 @@ public class App2 {
             System.out.println();
         }
         introStatement = true;
-
-        
-
         int i = 0;
-
         Scanner sc = new Scanner(System.in);
         Scanner sc1 = new Scanner(System.in);
-
         try {
-
             System.out.println("1. Add a book");
             System.out.println("2. Display all books");
             System.out.println("3. Update books");
@@ -59,9 +53,9 @@ public class App2 {
                         System.out.println("Program Ended!");
                         System.exit(0);
                     } else {
+                        System.out.println("Returning to Main Menu");
                         main(args);
                     }
-
                 default:
                     System.out.println("Invalid option, retrying again");
                     System.out.println();
